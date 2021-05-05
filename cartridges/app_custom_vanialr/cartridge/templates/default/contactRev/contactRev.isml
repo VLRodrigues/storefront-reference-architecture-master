@@ -1,0 +1,89 @@
+<isdecorate template="/common/layout/page">
+<div class="row">
+    ${Resource.msg('contactRev.title','forms',null)}
+</div>
+
+<isscript> 
+    var assets = require('*/cartridge/scripts/assets.js');
+</isscript>
+
+<form
+    action="${pdict.actionURL}"
+    class="contactRev-form"
+    method="POST"
+    <isprint value="${pdict.contactRevForm.attributes}" encoding="off" />>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group 
+                ${pdict.contactRevForm.addressFields.firstName.mandatory === true ? 'required' : ''}">
+                <label class="form-control-label" for="firstName">
+                    <isprint value="${pdict.contactRevForm.addressFields.firstName.label}" 
+                    encoding="htmlcontent" />
+                </label>
+                <input type="text" class="form-control" id="firstName"
+                    <isprint value="${pdict.contactRevForm.addressFields.firstName.attributes}" 
+                    encoding="off" />
+                    autocomplete="given-name" />
+                <div class="invalid-feedback"></div>
+            </div>
+
+            <div class="form-group 
+                ${pdict.contactRevForm.addressFields.lastName.mandatory === true ? 'required' : ''}">
+                <label class="form-control-label" for="lastName">
+                    <isprint value="${pdict.contactRevForm.addressFields.lastName.label}" 
+                    encoding="htmlcontent" />
+                </label>
+                <input type="text" class="form-control" id="lastName"
+                    <isprint value="${pdict.contactRevForm.addressFields.lastName.attributes}" encoding="off" />
+                    autocomplete="family-name" />
+                <div class="invalid-feedback"></div>
+            </div>
+      
+            <!--<div class="form-group
+                ${pdict.contactRevForm.contactCpf.mandatory === true ? 'required' : ''}" >
+                <label class="form-control-label" for="contactCpf">
+                    <isprint value="${pdict.contactRevForm.contactCpf.label}" encoding="htmlcontent" />
+                </label>
+                <input type="text" class="form-control" id="contactCpf"
+                    <isprint value="${pdict.contactRevForm.contactCpf.attributes}" encoding="off" /> 
+                    />
+                <div class= "invalid-feedback"></div>
+            </div>-->
+
+            <div class="form-group
+                ${pdict.contactRevForm.contactInfoFields.phone.mandatory === true ? 'required' : ''}">
+                <label class="form-control-label" for="phone">
+                    ${Resource.msg('field.customer.phone.number','checkout',null)}
+                </label>
+                <input type="tel" class="form-control" id="phone"
+                    <isprint value="${pdict.contactRevForm.contactInfoFields.phone.attributes}" encoding="off" />
+                    autocomplete="tel"/>
+                <div class="invalid-feedback"></div>
+            </div>
+
+            <div class="form-group
+                ${pdict.contactRevForm.contactInfoFields.email.mandatory === true ? 'required' : ''}
+                ${pdict.contactRevForm.contactInfoFields.email.htmlName}" >
+                <label class="form-control-label" for="email">
+                    ${Resource.msg('field.customer.email','checkout',null)}
+                </label>
+                <input type="email" class="form-control email" id="email"
+                    <isprint value="${pdict.contactRevForm.contactInfoFields.email.attributes}" encoding="off"/>
+                    aria-describedby="emailInvalidMessage" />
+                <div class="invalid-feedback" id="emailInvalidMessage"></div>
+            </div>
+
+        </div>
+        <div class="col-6"></div>
+    </div>
+    <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}"/>
+
+    <div class="row">
+        <div class="col-6">
+            <button type="submit" name="save" class="btn btn-save btn-block btn-primary">${Resource.msg('button.save','account',null)}</button>
+        </div>
+    </div>
+
+</form>
+</isdecorate>

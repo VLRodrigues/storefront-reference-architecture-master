@@ -1,0 +1,11 @@
+<body>
+
+        <p>${Resource.msg('custom.email.contact.title', 'customEmail', null)}</p>
+        <p>${Resource.msg('custom.email.contact.from', 'customEmail', null)}</p>
+        <p>${pdict.firstName}&nbsp;${pdict.lastName}</p>
+        <p>
+            ${Resource.msg('custom.email.contact.email', 'customEmail', null)}&nbsp;
+            ${pdict.email}
+        </p>
+
+</body>
